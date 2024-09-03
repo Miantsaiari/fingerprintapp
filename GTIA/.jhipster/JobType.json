@@ -1,0 +1,31 @@
+{
+  "annotations": {},
+  "applications": "*",
+  "documentation": "The JobTitle entity.",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "jobTypeName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updated",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "JobType",
+  "relationships": [],
+  "service": "serviceImpl"
+}
