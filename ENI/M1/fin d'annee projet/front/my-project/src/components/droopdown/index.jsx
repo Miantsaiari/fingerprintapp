@@ -21,7 +21,7 @@ import { CgProfile } from "react-icons/cg";
         <motion.div animate={open ? "open" : "closed"} className="relative">
           <button
             onClick={() => setOpen((pv) => !pv)}
-            className="flex items-center gap-2 rounded-md text-indigo-50 bg-white hover:bg-indigo-500 transition-colors"
+            className="flex items-center gap-2 rounded-md text-indigo-50 bg-white hover:bg-gray-100 transition-colors"
           >
             <span className="font-medium text-sm"> <div>
     <button type="button" class="inline-flex" id="menu-button" aria-expanded="true" aria-haspopup="true">

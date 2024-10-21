@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import 'moment/locale/fr'; // Importer la locale française
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import AddEventModal from './edt';
+
+moment.locale('fr'); // Configurer Moment.js pour utiliser le français
 
 const localizer = momentLocalizer(moment);
 
@@ -24,6 +27,22 @@ const MyCalendar = () => {
     setNewEvent({ title: '', start: '', end: '' });
   };
 
+  // Traductions des messages en français
+  const messages = {
+    next: "Suivant",
+    previous: "Précédent",
+    today: "Aujourd'hui",
+    month: "Mois",
+    week: "Semaine",
+    day: "Jour",
+    agenda: "Emplois du temps",
+    date: "Date",
+    time: "Heure",
+    event: "Matière",
+    noEventsInRange: "Aucun événement",
+    showMore: total => `+ Voir plus (${total})`
+  };
+
   return (
     <div className="h-screen p-4 bg-gray-100 dark:bg-gray-900">
       {/* Bouton pour ouvrir la modale */}
@@ -31,7 +50,7 @@ const MyCalendar = () => {
         onClick={openModal}
         className="mb-4 px-4 py-2 bg-blue-950 text-white rounded-md shadow hover:bg-gray-600"
       >
-       <i className='fa fa-plus'></i> Ajouter un emplois du temps
+       <i className='fa fa-plus'></i> Ajouter un emploi du temps
       </button>
 
       {/* Modale d'ajout d'événements */}
@@ -52,6 +71,7 @@ const MyCalendar = () => {
           endAccessor="end"
           style={{ height: '100%' }}
           className="bg-white dark:bg-gray-800 dark:text-white rounded-lg shadow"
+          messages={messages} // Utiliser les messages traduits
         />
       </div>
     </div>

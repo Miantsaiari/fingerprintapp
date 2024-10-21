@@ -6,6 +6,9 @@ import { Header } from "../header";
 import { FaEdit, FaPaperPlane, FaPlus, FaSearch, FaUser } from "react-icons/fa";
 import { MdCheckBoxOutlineBlank, MdDelete } from "react-icons/md";
 import { useState } from "react";
+import StaggeredDropDown from "../droopdown";
+import FiltreE from "../filtre";
+import FiltreP from "../filtre/indexp";
 
 const TABLE_HEAD = [
   {
@@ -61,6 +64,7 @@ const TABLE_ROWS = [
 ];
  
 export function Table() {
+const [selectedFiltre, setSelectedFiltre] = useState(null);  
 const [isOpen, setIsOpen] = useState(false);
 const [isOpenMail, setIsOpenMail] = useState(false);
 
@@ -73,59 +77,33 @@ const handleCloseMail = () => setIsCloseMail(false);
   return (
   
         <div>
-        <Header/>
-        <div className="shadow-md bg-gray-150 py-2 my-3 gap-10 flex">
-         <select className="text-gray-400 font-bold py-2 px-4 rounded m-2 flex mr-2 hover:gray-400 w-60 mx-4 px-3 " >
-    <optgroup label="L1">
-    <option>IG </option>
-    <option>GB</option>
-    <option>ASR</option>
-  </optgroup>
-  <optgroup label="L2">
-    <option>IG </option>
-    <option>GB</option>
-    <option>ASR</option>
-  </optgroup>
-  <optgroup label="L3">
-    <option>IG </option>
-    <option>GB</option>
-    <option>ASR</option>
-  </optgroup>
-  <optgroup label="M1">
-    <option>IG </option>
-    <option>GB</option>
-    <option>ASR</option>
-    <option>GID</option>
-    <option>OCC</option>
-  </optgroup>
-  <optgroup label="M2">
-    <option>IG </option>
-    <option>GB</option>
-    <option>ASR</option>
-    <option>GID</option>
-    <option>OCC</option>
-  </optgroup>
-</select>
-<select className="text-gray-400 font-bold py-2 px-4 rounded m-2 flex mr-2 hover:gray-400 w-60 mx-4 px-3" >
-          <option> <FaUser className="mt-1 text-gray-400"/> Professeurs</option>
-          <option>Ralaivao Christian</option>
-          <option>Rabetafika Louis</option>
-          <option>Ramamonjisoa Berthin</option>
-          </select> 
-          <div className='relative'> 
-          <form>
-            <input className="text-gray-400 font-bold py-2 px-4 rounded m-2 flex mr-2 hover:gray-400 w-00 mx-4 px-3" placeholder="Rechercher..."/>
-            <FaSearch className="absolute right-9 top-1/2 transform -translate-y-1/2 text-gray-400"/>
-          </form>
+        <div>
+        <div class="hidden sm:ml-6 sm:block bg-gray-100 shadow-md py-3 px-6 ml-0">
+          <div class="flex space-x-4">
+          <a
+            href="#"
+            className="rounded-md px-3 py-2 text-lg font-medium text-gray-400 hover:bg-blue-950 hover:text-white"
+            onClick={() => setSelectedFiltre('etudiant')}
+          >
+            Étudiant
+          </a>
+          {/* Lorsqu'on clique sur Professeur, on sélectionne le filtre Professeur */}
+          <a
+            href="#"
+            className="rounded-md px-3 py-2 text-xl font-medium text-gray-400 hover:bg-blue-950 hover:text-white"
+            onClick={() => setSelectedFiltre('professeur')}
+          >
+            Professeur
+          </a>
           </div>
-        <button
-        className="bg-blue-950 text-white font-bold py-2 px-4 rounded m-2 mx-4"
-        onClick={handleOpen}
-      >
-        <i className="fa fa-plus mr-2"></i> Ajouter
-      </button>
+          <div className="absolute top-0 right-6 bg-white rounded-full p-2 shadow my-6" >
+            <StaggeredDropDown/>
+          </div>
         </div>
-    
+        </div>
+        
+        {selectedFiltre === 'etudiant' && <FiltreE />}
+        {selectedFiltre === 'professeur' && <FiltreP />}
 
       {isOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">

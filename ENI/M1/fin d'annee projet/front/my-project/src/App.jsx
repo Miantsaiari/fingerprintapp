@@ -6,7 +6,9 @@ import { Table } from "./components/table";
 import MyCalendar from "./components/calendrier";
 import Login from "./components/Login";
 import Stat from "./components/Statistique";
-import Filtre from "./components/filtre";
+import DmdAbs from "./components/DemandeAbs";
+import JustAbs from "./components/JustAbs";
+import { ListAbs } from "./components/ListeAbs";
 
 const MyContext = createContext();
 
@@ -40,11 +42,13 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" exact={true} element={<Dashboard />} />
-            <Route path="filtre" element={<Filtre/>}/>
             <Route path="Table" element={<Table />} />
             <Route path="edt" element={<MyCalendar />} />
             <Route path="login" element={<Login />} />
             <Route path="stat" element={<Stat />} />
+            <Route path="dmdAbs" element={<DmdAbs/>}/>
+            <Route path="justAbs" element={<JustAbs/>}/>
+            <Route path="listAbs" element={<ListAbs/>}/>
           </Routes>
         </Layout>
       </MyContext.Provider>

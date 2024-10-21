@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from '../header';
 import { PiLinkSimple } from "react-icons/pi";
 
-const DmdAbs = () => {
+const JustAbs = () => {
   const data = [
     { id: 1, name: 'Alice'  },
     { id: 2, name: 'Bob'},
@@ -29,7 +29,7 @@ const DmdAbs = () => {
   );
 };
 
-export default DmdAbs;
+export default JustAbs;
 
 
 
